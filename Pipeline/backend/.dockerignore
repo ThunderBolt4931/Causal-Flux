@@ -1,0 +1,45 @@
+# Large data files (mount as volumes instead)
+!final_dataset.json
+*.json
+!requirements.txt
+!clustered_transcripts.json
+!backend_debug.log
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Keep these (whitelist)
+!Query.json

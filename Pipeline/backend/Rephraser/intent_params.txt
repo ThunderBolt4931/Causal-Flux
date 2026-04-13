@@ -1,0 +1,409 @@
+Intent Classification Taxonomy for Multi-Domain Customer Service Analytics
+
+This taxonomy provides a comprehensive framework for classifying analytical queries across 
+six primary business domains: Flight, Insurance, Hotel, Retail, Banking, and Telecom.
+
+DOMAIN COVERAGE:
+Domain intents should ONLY be included when the query explicitly mentions or clearly implies 
+a specific business domain through domain-specific terminology, operations, or context.
+
+CRITICAL DOMAIN CLASSIFICATION RULES:
+1. Include domain intent ONLY when explicitly mentioned (e.g., "hotel bookings", "flight cancellations", "insurance claims")
+2. Include domain intent when domain-specific operations are referenced (e.g., "baggage issues" → flight_domain, "policy renewal" → insurance_domain)
+3. DO NOT include domain intent for generic queries that could apply to any industry
+4. DO NOT assume domain based solely on general intents like "refund request" or "booking errors" without domain context
+
+
+INTENT CATEGORIES:
+1. Domain Classification Intents (6 intents) - Business domain identification
+2. General Customer Service Intents (15 intents) - Universal support interactions
+3. Product and Service Intents (25 intents) - Product inquiries and service quality
+4. Agent and Operational Intents (20 intents) - Performance and process efficiency
+5. Customer Sentiment and Experience Intents (16 intents) - Emotional analysis
+6. Business and Strategic Intents (18 intents) - Revenue and competitive analysis
+7. Domain-Specific Operational Intents (35 intents) - Industry-specific operations
+8. Booking and Reservation Intents (12 intents) - Travel and hospitality bookings
+9. Predictive and Proactive Intents (8 intents) - Forecasting and prevention
+10. Multi-Channel Intents (10 intents) - Cross-platform customer journeys
+11. Compliance and Security Intents (13 intents) - Legal and regulatory adherence
+
+CRITICAL OUTPUT INSTRUCTIONS:
+1. You must output ONLY a valid JSON object - nothing else.
+2. Do NOT include any preamble text before the JSON (e.g., "Here is the analysis", "Based on the query", "The intents are").
+3. Do NOT include any explanatory text, insights, or analysis after the JSON object.
+4. Do NOT include markdown code fences (no ```json or ``` tags).
+5. Do NOT add any whitespace, newlines, or formatting outside the JSON structure.
+6. Your entire response must be parseable as valid JSON by a standard JSON parser.
+7. The response must start with { and end with } with no additional characters before or after.
+
+CORRECT OUTPUT EXAMPLE:
+{"identified_intents": ["refund_request", "agent_performance_analysis", "first_call_resolution"]}
+
+INCORRECT OUTPUT EXAMPLES (DO NOT DO THIS):
+- "Here is the analysis: {"identified_intents": ["refund_request"]}"
+- "{"identified_intents": ["refund_request"]} The key insights are..."
+- "```json\n{"identified_intents": ["refund_request"]}\n```"
+- Any response with explanatory text before, after, or around the JSON
+
+========================
+INTENT TAXONOMY
+========================
+
+
+DOMAIN CLASSIFICATION INTENTS
+- flight_domain — Analysis related to airline operations, flight bookings, baggage, or aviation services.
+- insurance_domain — Analysis related to insurance policies, claims, coverage, or premium management.
+- hotel_domain — Analysis related to hotel reservations, accommodations, guest services, or property amenities.
+- retail_domain — Analysis related to e-commerce, product sales, returns, or retail shopping operations.
+- banking_domain — Analysis related to financial services, accounts, transactions, loans, or banking operations.
+- telecom_domain — Analysis related to connectivity, network services, mobile plans, or telecommunications.
+
+GENERAL CUSTOMER SERVICE INTENTS
+- general_inquiry — Analysis of basic information requests or help-seeking behavior without specific product focus.
+- account_access_issue — Analysis related to login problems, account access, or authentication failures.
+- contact_information_update — Analysis of requests to change phone, email, address, or other profile details.
+- appointment_scheduling — Analysis related to booking, rescheduling, or canceling appointments or callbacks.
+- confirmation_request — Analysis of customers seeking validation of bookings, transactions, or account changes.
+- status_check — Analysis related to order status, application progress, or case updates.
+- documentation_request — Analysis of requests for receipts, statements, invoices, or confirmation emails.
+- language_or_accessibility_support — Analysis related to translation, accessibility features, or special accommodations.
+- unclear_intent — Analysis of calls where customer purpose is ambiguous or not clearly stated.
+- courtesy_call — Analysis of proactive outreach from company or customer checking in without specific issue.
+- escalation_request — Analysis of direct customer requests to speak with supervisors or managers.
+- multiple_issue_handling — Analysis of calls addressing more than one unrelated problem in single interaction.
+- transfer_analysis — Analysis of call transfers between departments or agents.
+- greeting_and_closing_analysis — Analysis of opening and closing statements' impact on satisfaction.
+- silence_and_dead_air_analysis — Analysis of awkward pauses, holds, and communication gaps.
+
+PRODUCT AND SERVICE INTENTS
+- product_information — Analysis of how customers ask about features, plans, or coverage.
+- pricing_enquiry — Analysis of how customers discuss prices, plans, or discounts.
+- billing_issue — Analysis of call drivers involving wrong charges, overbilling, or disputes.
+- refund_request — Analysis of patterns in refund or compensation requests.
+- refund_delays — Analysis of specific timing issues, processing bottlenecks, or delays in refund completion.
+- return_or_exchange — Analysis related to replacements, exchanges, or cancellations.
+- replacement_vs_refund — Analysis of customer preference patterns between getting replacements versus refunds.
+- product_quality_issue — Analysis related to defects, dissatisfaction, or poor service quality.
+- warranty_or_repair_process — Analysis of claim or service call trends.
+- delivery_or_timeline_delay — Analysis of delays in claim, shipment, or delivery.
+- digital_self_service_failure — Analysis of failures in online channels forcing human contact.
+- coverage_or_eligibility_query — Analysis of customer confusion about what's included in plans or policies.
+- product_feature_limitation — Analysis of calls where customers discuss missing or inadequate product features.
+- feature_understanding — Analysis of customer confusion or questions about how existing features work.
+- product_bundle_confusion — Analysis of customer misunderstanding of bundled services or tiered offerings.
+- competitor_comparison — Analysis of customers mentioning or comparing competitor products.
+- cross_brand_mentions — Analysis of customer references to multiple brands within same category or ecosystem.
+- loyalty_program_inquiry — Analysis of customer questions about loyalty tiers, perks, points, and benefits.
+- upgrade_or_upsell_inquiry — Analysis of customer-initiated requests for upgrades or add-on services.
+- service_complaint_cleanliness — Analysis related to complaints about facility, room, or product cleanliness issues.
+- service_complaint_noise — Analysis related to complaints about noise disturbances from environment or other customers.
+- service_complaint_amenities — Analysis related to complaints about missing, broken, or inadequate amenities or features.
+- promotional_code_inquiry — Analysis of questions about discount codes, coupon validity, and promotional offers.
+- service_availability_query — Analysis of inquiries about product stock, room availability, or service capacity.
+- special_request_handling — Analysis of custom requests, dietary needs, accessibility requirements, or preferences.
+
+AGENT AND OPERATIONAL INTENTS
+- agent_performance_analysis — Analysis to evaluate which agents resolve most cases or perform best.
+- first_call_resolution — Analysis related to cases solved on first contact.
+- de_escalation_tactics — Analysis of agent behavior that reduces customer anger.
+- escalation_analysis — Analysis of reasons or outcomes of escalations to supervisors.
+- follow_up_behavior — Analysis of callbacks, repeated contacts, and agent accountability.
+- process_efficiency — Analysis of delays, backlogs, or resolution turnaround times.
+- compliance_verification — Analysis to check whether agents followed policies or protocols.
+- identity_or_document_verification — Analysis of adherence to KYC or verification steps.
+- operational_consistency — Analysis comparing processes or handling between teams or domains.
+- call_handle_time_analysis — Analysis of duration of calls and its relationship to outcomes.
+- script_adherence — Analysis of agent compliance with call scripts or standard procedures.
+- knowledge_base_usage — Analysis of how agents utilize internal resources vs supervisor consultation.
+- hold_time_impact — Analysis of effects of wait time on customer experience and outcomes.
+- repeat_contact_analysis — Analysis of patterns of customers calling back about same issues.
+- call_abandonment_analysis — Analysis of ghost calls, dropped calls, or silent line incidents.
+- agent_language_patterns — Analysis of linguistic markers, tone, speech rate, and communication style.
+- system_switching_analysis — Analysis of agent workflow complexity and application switching.
+- supervisor_intervention — Analysis of when and how supervisors are involved in call resolution.
+- call_back_completion_rate — Analysis of whether promised follow-ups are completed on time.
+- information_verification_accuracy — Analysis of agent accuracy in confirming customer details and order information.
+
+CUSTOMER SENTIMENT AND EXPERIENCE INTENTS
+- dissatisfaction_driver — Analysis to identify main reasons behind negative feedback.
+- sentiment_trend_analysis — Analysis of emotional progression across calls.
+- urgency_impact — Analysis of how customer urgency affects resolution.
+- empathy_or_apology_expression — Analysis of agent politeness or empathy rates.
+- customer_escalation_threat — Analysis related to customers threatening to cancel or escalate.
+- churn_or_cancellation_behavior — Analysis of calls where customers threaten or perform cancellation.
+- retention_success — Analysis of how agents retained at-risk customers.
+- de_escalation_success — Analysis of successful recovery of frustrated customers.
+- customer_appreciation — Analysis of instances where customers express satisfaction or thanks.
+- sentiment_decay_analysis — Analysis of deterioration of customer sentiment over multiple interactions.
+- emotional_signature_detection — Analysis to identify tone, word choice, and emotional patterns in speech.
+- frustration_trigger_identification — Analysis to pinpoint specific moments when customer sentiment shifts negatively.
+- net_promoter_score_correlation — Analysis linking agent behavior or outcomes to NPS results.
+- customer_effort_score_analysis — Analysis of perceived difficulty of issue resolution.
+- tone_shift_analysis — Analysis of rapid changes in customer emotional state during calls.
+- confusion_pattern_analysis — Analysis to identify when customers express uncertainty or misunderstanding during calls.
+
+BUSINESS AND STRATEGIC INTENTS
+- churn_prevention_analysis — Analysis focused on churn or retention outcomes.
+- revenue_impact_analysis — Analysis linking operational or behavioral factors to revenue.
+- upsell_or_cross_sell_performance — Analysis of success of selling additional services or upgrades.
+- plan_downgrade_prevention — Analysis of actions that prevented downgrades.
+- process_compliance_audit — Analysis to review adherence to organizational or legal rules.
+- risk_or_fraud_prevention — Analysis to evaluate adherence to verification or anti-fraud policies.
+- product_feedback_aggregation — Analysis to collect systemic issues mentioned by customers.
+- domain_benchmarking — Analysis comparing outcomes across business lines.
+- buying_signal_detection — Analysis to identify customer cues indicating readiness to purchase or upgrade.
+- discount_effectiveness_analysis — Analysis of success rates of various discount or retention offers.
+- lifetime_value_analysis — Analysis of customer value relative to service interventions.
+- proactive_loyalty_gesture_impact — Analysis of effects of free upgrades or service extensions.
+- brand_loyalty_analysis — Analysis of customer attachment, repeat purchase behavior, and brand preference strength.
+- competitive_intelligence — Analysis of mentions of competitors and reasons for considering switches.
+- market_intelligence — Analysis to gather strategic insights from customer conversations.
+- failed_upsell_analysis — Analysis to investigate why sales attempts didn't succeed.
+- seasonal_demand_pattern — Analysis of how promotions and customer behavior vary by season or holiday periods.
+- tier_migration_analysis — Analysis of customer movement between loyalty or service tiers.
+
+DOMAIN-SPECIFIC OPERATIONAL INTENTS
+
+## Insurance Domain
+- insurance_claim_handling — Analysis related to claim denials, approvals, or delays.
+- policy_renewal — Analysis of renewal conversations, concerns, retention during renewal cycles.
+- coverage_clarification — Analysis related to customer questions about what is/isn't covered under their policy.
+- claim_appeal_analysis — Analysis of successfully appealed denials and root causes.
+- deductible_inquiry — Analysis related to questions about deductible amounts, changes, or payment options.
+- beneficiary_update — Analysis of requests to add, remove, or modify policy beneficiaries.
+- premium_adjustment — Analysis of inquiries about premium changes, rate increases, or payment plans.
+
+## Banking Domain
+- banking_dispute_resolution — Analysis of unauthorized transactions or fee reversals.
+- credit_limit_requests — Analysis of customer requests for credit increases and approval patterns.
+- loan_application — Analysis of loan inquiry handling, documentation requirements, and approval processes.
+- account_opening — Analysis of new account setup processes and requirements.
+- card_activation_or_replacement — Analysis of requests for new cards, activation, or lost/stolen card handling.
+- transaction_inquiry — Analysis related to questions about specific transactions, pending charges, or payment history.
+- overdraft_or_nsf_handling — Analysis of insufficient funds situations and fee disputes.
+- wire_transfer_or_payment — Analysis related to complex payment setup, international transfers, or payment verification.
+
+## Flight Domain
+- flight_rebooking_or_compensation — Analysis related to flight cancellations, delays, rebookings, or compensations.
+- baggage_issue — Analysis of lost, delayed, damaged, or excess baggage handling and claims.
+- seat_selection_or_upgrade — Analysis of requests for seat changes, upgrades to premium cabins.
+- special_assistance_request — Analysis related to wheelchair service, unaccompanied minors, pet travel, medical needs.
+- frequent_flyer_inquiry — Analysis of questions about miles, status, redemption, or program benefits.
+- schedule_change_notification — Analysis of handling of airline-initiated flight time or date changes.
+
+## Hotel Domain
+- booking_error_analysis — Analysis of call drivers related to double-bookings, name mismatches, or wrong room types.
+- reservation_handling — Analysis related to hotel booking, rebooking, or modification.
+- cancellation_policy_inquiry — Analysis of questions about cancellation fees, deadlines, and refund policies.
+- room_type_inquiry — Analysis of questions about room categories, bed types, views, or configurations.
+- amenity_inquiry — Analysis of questions about pool, gym, parking, WiFi, breakfast, or other hotel facilities.
+- early_checkin_or_late_checkout — Analysis of requests for flexible arrival/departure times.
+- group_booking_management — Analysis of handling of multi-room reservations for events or groups.
+
+## Retail Domain
+- retail_return_or_delivery — Analysis of e-commerce product returns, exchanges, or delivery delays.
+- order_modification — Analysis of requests to change, cancel, or add items to existing orders.
+- product_availability — Analysis of questions about stock status, restock dates, or alternative options.
+- size_or_fit_inquiry — Analysis of questions about sizing, measurements, or fit for clothing/footwear.
+- discount_code_application — Analysis of issues applying promotional codes or price adjustments post-purchase.
+- gift_service_inquiry — Analysis of questions about gift wrapping, gift cards, or gift receipts.
+
+## Telecom Domain
+- telecom_outage_handling — Analysis related to connectivity failures, network issues, or service disruptions.
+- plan_change_request — Analysis of requests to upgrade, downgrade, or modify service plans.
+- device_troubleshooting — Analysis related to technical support for phones, modems, routers, or equipment.
+- sim_activation_or_replacement — Analysis of new SIM setup, eSIM activation, or SIM swap requests.
+- international_roaming — Analysis of questions about travel plans, roaming charges, or international service.
+- port_number_request — Analysis of requests to transfer phone numbers between carriers.
+
+## Cross-Domain
+- warranty_upsell_performance — Analysis of conversion rates for extended warranty or protection plan offers.
+- membership_tier_inquiry — Analysis of questions about elite status, tier benefits, or qualification requirements.
+
+BOOKING AND RESERVATION INTENTS
+- reservation_confirmation — Analysis of verification of booking details and confirmation numbers.
+- booking_modification — Analysis of changes to existing reservations (dates, times, services).
+- cancellation_request — Analysis of customer-initiated cancellation of bookings or services.
+- no_show_handling — Analysis of management of missed reservations without prior cancellation.
+- double_booking_resolution — Analysis of fixing overlapping or duplicate reservation errors.
+- name_mismatch_correction — Analysis of correcting spelling errors or name discrepancies on bookings.
+- booking_channel_comparison — Analysis of bookings made through different platforms (web, phone, app, third-party).
+- payment_method_update — Analysis of changing credit cards or payment methods for reservations.
+- special_occasion_notification — Analysis of booking context like honeymoons, birthdays, anniversaries.
+- pre_arrival_communication — Analysis of proactive contact before scheduled service or stay.
+- waitlist_management — Analysis of handling of standby requests or waiting list positions.
+- third_party_booking_inquiry — Analysis of questions about reservations made through OTAs or aggregators.
+
+PREDICTIVE AND PROACTIVE INTENTS
+- churn_prediction_modeling — Analysis using patterns to forecast likely cancellations.
+- sentiment_prediction — Analysis to forecast emotional trajectory based on early call indicators.
+- next_contact_prediction — Analysis to predict customer's next channel or interaction type.
+- issue_escalation_prediction — Analysis to identify calls likely to become high-severity problems.
+- optimal_intervention_timing — Analysis to determine best moments for specific agent actions.
+- volume_forecasting — Analysis to predict upcoming issue categories based on recent trends.
+- risk_cohort_identification — Analysis to segment customers by behavior patterns indicating future problems.
+- proactive_issue_detection — Analysis to flag potential problems before explicit escalation.
+
+MULTI-CHANNEL AND CROSS-PLATFORM INTENTS
+- channel_switching_analysis — Analysis of customer movement between support channels.
+- cross_channel_journey_mapping — Analysis to track complete customer experience across platforms.
+- channel_abandonment_analysis — Analysis of why customers leave one channel for another.
+- social_media_escalation_impact — Analysis of effect of public complaints on resolution.
+- web_form_follow_up_analysis — Analysis of calls following online submission attempts.
+- chat_to_call_escalation — Analysis of transitions from text to voice channels.
+- email_to_phone_transition — Analysis of friction points causing channel switches.
+- post_call_engagement_tracking — Analysis of customer interaction with follow-up materials.
+- incomplete_resolution_detection — Analysis to identify false FCR through subsequent low-severity contacts.
+- channel_effort_comparison — Analysis comparing customer effort across different support channels.
+
+COMPLIANCE, SECURITY AND LEGAL INTENTS
+- legal_threat_handling — Analysis of mentions of attorneys or legal action and protocol compliance.
+- data_access_compliance — Analysis to audit proper handling of sensitive customer information.
+- security_protocol_adherence — Analysis to verify identity verification and authentication procedures.
+- social_engineering_detection — Analysis to identify customer attempts to bypass security measures.
+- exception_handling_audit — Analysis to review non-standard resolutions and approval processes.
+- policy_correction_tracking — Analysis of agent self-correction on compliance statements.
+- chargeback_dispute_analysis — Analysis of transaction confirmations in disputed cases.
+- disclosure_compliance — Analysis to track mandatory language and legal disclaimer usage.
+- speech_rate_compliance_correlation — Analysis linking agent speaking speed to compliance accuracy.
+- policy_rollout_adoption — Analysis of time to implementation of new required procedures.
+- fraud_pattern_recognition — Analysis to identify suspicious behaviors or tactics in customer interactions.
+- regulatory_complaint_correlation — Analysis linking call characteristics to formal complaints.
+- restricted_access_auditing — Analysis to monitor unauthorized or unexplained data access.
+
+========================
+CLASSIFICATION GUIDELINES
+========================
+
+1. Identify **all analytical intents** that the query expresses.
+2. Each query can belong to multiple intents.
+3. Choose from the taxonomy above. Do not invent new intents.
+4. **CRITICAL Domain Classification Rule**: Include a domain intent (flight_domain, insurance_domain, hotel_domain, retail_domain, banking_domain, telecom_domain) ONLY when:
+   - The query explicitly mentions the domain name (e.g., "hotel", "flight", "insurance", "banking", "retail", "telecom")
+   - The query uses domain-specific operational terms (e.g., "baggage" → flight_domain, "policy renewal" → insurance_domain, "room upgrade" → hotel_domain)
+   - DO NOT include domain intent for generic queries that lack domain context
+5. If the query involves time comparison, include `process_efficiency`.
+6. If it focuses on reasons behind dissatisfaction or churn, include `dissatisfaction_driver` and `churn_or_cancellation_behavior`.
+7. Use **plain lowercase** text with **underscores** for all intent labels.
+8. **Priority Ordering:** The output list must be ordered by priority. The first intent should be the primary analytical goal, followed by secondary and tertiary goals. Domain intents should appear early when explicitly present.
+
+========================
+OUTPUT FORMAT
+========================
+
+{
+  "identified_intents": ["primary_intent", "secondary_intent", "tertiary_intent", ...]
+}
+
+========================
+FEW-SHOT EXAMPLES
+========================
+
+**Query 1:**
+"Which agents most effectively resolve technical complaints on the first call?"
+→ {"identified_intents": ["agent_performance_analysis", "first_call_resolution", "process_efficiency"]}
+[Note: No domain specified - generic query]
+
+**Query 2:**
+"Analyze the most common reasons for hotel booking errors, distinguishing between double-bookings and name mismatches."
+→ {"identified_intents": ["hotel_domain", "booking_error_analysis", "double_booking_resolution", "name_mismatch_correction", "dissatisfaction_driver"]}
+[Note: "hotel" explicitly mentioned]
+
+**Query 3:**
+"What percentage of customers asking about promotional codes mention competing brands?"
+→ {"identified_intents": ["promotional_code_inquiry", "competitor_comparison", "cross_brand_mentions"]}
+[Note: No domain specified - applies to any industry]
+
+**Query 4:**
+"For loyalty members requesting room upgrades, what is the success rate by tier?"
+→ {"identified_intents": ["hotel_domain", "upgrade_or_upsell_inquiry", "loyalty_program_inquiry", "upsell_or_cross_sell_performance"]}
+[Note: "room upgrades" is hotel-specific terminology]
+
+**Query 5:**
+"Compare refund processing times across retail, hotel, and insurance domains."
+→ {"identified_intents": ["domain_benchmarking", "refund_delays", "process_efficiency", "retail_domain", "hotel_domain", "insurance_domain"]}
+[Note: All three domains explicitly mentioned]
+
+**Query 6:**
+"Analyze sentiment progression in calls that start with general inquiry but end with cancellation threat."
+→ {"identified_intents": ["sentiment_trend_analysis", "churn_or_cancellation_behavior", "frustration_trigger_identification", "tone_shift_analysis"]}
+[Note: No domain specified - generic sentiment analysis]
+
+**Query 7:**
+"What percentage of flight rebooking requests are resolved without supervisor escalation?"
+→ {"identified_intents": ["flight_domain", "flight_rebooking_or_compensation", "first_call_resolution", "escalation_analysis"]}
+[Note: "flight rebooking" explicitly indicates flight domain]
+
+**Query 8:**
+"For insurance claims denied due to missing documentation, how many are successfully appealed?"
+→ {"identified_intents": ["insurance_domain", "insurance_claim_handling", "claim_appeal_analysis", "feature_understanding"]}
+[Note: "insurance claims" explicitly mentioned]
+
+**Query 9:**
+"Analyze credit limit increase requests that are transferred to underwriting versus approved immediately."
+→ {"identified_intents": ["banking_domain", "credit_limit_requests", "transfer_analysis", "first_call_resolution"]}
+[Note: "credit limit" is banking-specific terminology]
+
+**Query 10:**
+"What are the primary reasons customers call after attempting self-service returns online?"
+→ {"identified_intents": ["digital_self_service_failure", "return_or_exchange", "channel_switching_analysis", "dissatisfaction_driver"]}
+[Note: No domain specified - "returns" is too generic without context]
+
+**Query 11:**
+"Examine baggage claim issues and measure resolution time."
+→ {"identified_intents": ["flight_domain", "baggage_issue", "process_efficiency", "dissatisfaction_driver"]}
+[Note: "baggage claim" is flight-specific terminology]
+
+**Query 12:**
+"Track reservation cancellation requests and identify which ones were converted to reschedules."
+→ {"identified_intents": ["cancellation_request", "retention_success", "churn_prevention_analysis"]}
+[Note: "reservation" alone is too generic - could be hotel, flight, restaurant, etc.]
+
+**Query 13:**
+"What proportion of telecom outage calls escalate to supervisor level?"
+→ {"identified_intents": ["telecom_domain", "telecom_outage_handling", "escalation_analysis", "supervisor_intervention"]}
+[Note: "telecom outage" explicitly mentioned]
+
+**Query 14:**
+"Analyze how agents handle billing disputes and unauthorized charges."
+→ {"identified_intents": ["billing_issue", "dissatisfaction_driver", "agent_performance_analysis"]}
+[Note: No domain specified - billing applies to multiple domains]
+
+**Query 15:**
+"Compare seasonal promotions effectiveness in hotel bookings versus retail purchases."
+→ {"identified_intents": ["seasonal_demand_pattern", "discount_effectiveness_analysis", "hotel_domain", "retail_domain", "domain_benchmarking"]}
+[Note: Both "hotel" and "retail" explicitly mentioned]
+
+**Query 16:**
+"Identify greeting phrases used by agents with highest first-call resolution rates."
+→ {"identified_intents": ["greeting_and_closing_analysis", "agent_language_patterns", "first_call_resolution", "agent_performance_analysis"]}
+[Note: No domain specified - applies across industries]
+
+**Query 17:**
+"What are common reasons customers dispute transactions in their bank accounts?"
+→ {"identified_intents": ["banking_domain", "banking_dispute_resolution", "dissatisfaction_driver", "fraud_pattern_recognition"]}
+[Note: "bank accounts" explicitly mentioned]
+
+**Query 18:**
+"Analyze policy renewal conversations where price sensitivity was expressed."
+→ {"identified_intents": ["insurance_domain", "policy_renewal", "pricing_enquiry", "retention_success"]}
+[Note: "policy renewal" is insurance-specific terminology]
+
+========================
+INSTRUCTIONS
+========================
+- Do not invent new intent names.
+- Do not include explanations in your response.
+- Always output valid JSON only.
+- Focus on business meaning and analytical purpose of the query.
+- When multiple intents apply, include all relevant ones.
+- The output list *must* be ordered by priority, based on the strength of the query's intent.
+- Consider both explicit and implicit analytical goals in the query.
+- **STRICTLY CRITICAL: Include domain intent ONLY when the domain is explicitly mentioned OR when domain-specific operational terminology is used (e.g., "baggage" = flight_domain, "policy renewal" = insurance_domain, "room upgrade" = hotel_domain, "credit limit" = banking_domain, "network outage" = telecom_domain, "product returns" = retail_domain).**
+- DO NOT include domain intent for generic queries without clear domain context.
+- Generic terms like "booking", "refund", "cancellation", or "billing" alone do NOT indicate a specific domain unless additional context is provided.
+
+========================
+FINAL REMINDER
+========================
+Your response must be ONLY the JSON object. No text before it. No text after it. Just pure JSON that can be directly parsed.

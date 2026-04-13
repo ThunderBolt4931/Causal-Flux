@@ -1,0 +1,17 @@
+# Evaluation Suite Dependencies
+# ==============================
+
+# OpenAI API
+openai>=1.0.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# NLP Metrics
+sacrebleu>=2.3.0
+rouge-score>=0.1.2
+bert-score>=0.3.13
+
+# Embeddings
+sentence-transformers>=2.2.0

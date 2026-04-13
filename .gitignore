@@ -1,0 +1,30 @@
+# Large media files
+*.mp4
+*.avi
+*.mkv
+*.mov
+
+# Large dataset files
+final_dataset.json
+clustered_transcripts.json
+corpus.json
+Default_corpus.json
+embeddings_keywords.json
+clusters_keywords.json
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/

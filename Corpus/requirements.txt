@@ -1,0 +1,14 @@
+# Corpus Generation Dependencies
+# ================================
+
+# Google Gemini AI
+google-genai>=0.3.0
+
+# Async file operations
+aiofiles>=23.0.0
+
+# Data validation
+pydantic>=2.0.0
+
+# Environment variables (optional)
+python-dotenv>=1.0.0

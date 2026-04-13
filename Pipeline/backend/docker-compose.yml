@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  rag-app:
+    build:
+      context: .
+      dockerfile: 
+    ports:
+      - "4000:4000"
+    container_name: rag_chatbot
+    env_file:
+      - .env
+
+    volumes:
+      - ./final_dataset.json:/app/final_dataset.json
+    networks:
+      - rag-network
+    stdin_open: true
+    tty: true
+
+networks:
+  rag-network:
+    driver: bridge
+
+volumes:
+  neo4j_data:
+  neo4j_logs:

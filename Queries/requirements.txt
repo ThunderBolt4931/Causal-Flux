@@ -1,0 +1,11 @@
+# Query Generation Dependencies
+# ==============================
+
+# LLM Client (OpenAI/Groq compatible)
+openai>=1.0.0
+
+# Data processing
+pandas>=2.0.0
+
+# Progress bars
+tqdm>=4.65.0
