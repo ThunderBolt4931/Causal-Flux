@@ -11,22 +11,17 @@
 
 **CausalFlux** is a sophisticated **Retrieval-Augmented Generation (RAG) Pipeline** designed for intelligent analysis and querying of customer service call transcripts. This system combines advanced **Graph RAG** and **Vector RAG** techniques to enable causality-aware question answering over large transcript datasets.
 
-### What This Project Does
+## What This Project Does?
 
 1. **Corpus Generation**: Processes raw call transcripts using Gemini AI to extract metadata, interaction drivers, sentiment analysis, and call summaries.
-
 2. **Hierarchical Clustering**: Groups transcripts into two-level clusters (L1/L2) using OpenAI embeddings and agglomerative clustering for efficient retrieval.
-
 3. **Knowledge Graph Construction**: Builds a Neo4j graph database with relationships between transcripts, domains, call reasons, and interaction drivers.
-
 4. **Intelligent RAG Pipeline**: 
    - **Query Routing**: Automatically classifies intent to choose the best retrieval strategy
    - **Multi-hop Reasoning**: Handles complex queries requiring multiple sub-queries
    - **Hybrid Search**: Combines Graph Search (Neo4j PPR) + Vector Search (ChromaDB/BM25)
    - **Context-aware Reranking**: Uses sentence transformers for final result optimization
-
 5. **Multi-Model LLM Support**: Seamlessly switch between OpenAI GPT-4o, Claude 3, Llama 3, and Gemini models.
-
 6. **Interactive Web Interface**: Modern React frontend with 3D knowledge graph visualization, real-time streaming responses, and visualization dashboards.
 
 ---
