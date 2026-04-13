@@ -31,6 +31,12 @@
 
 ---
 
+## Demo Video
+
+[![CausalFlux Demo Video](https://img.youtube.com/vi/5CY9jB4rwU4/maxresdefault.jpg)](https://youtu.be/5CY9jB4rwU4?si=ZJWNmyUdzVaeUA_X)
+
+---
+
 ## System Architecture
 
 ```mermaid
