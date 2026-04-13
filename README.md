@@ -30,7 +30,23 @@
 6. **Interactive Web Interface**: Modern React frontend with 3D knowledge graph visualization, real-time streaming responses, and visualization dashboards.
 
 ---
+## Core Components
 
+This section provides a concise overview of the key techniques and modules used across the pipeline.
+
+| Component | Description |
+|-----------|-------------|
+| **Corpus Generation** | Uses Google Gemini to extract structured metadata (domain, intent, call reason, interaction drivers, sentiment scores) from raw call transcripts, transforming unstructured conversations into analysis-ready data. |
+| **Hierarchical Clustering** | Employs agglomerative clustering at two levels — 20 high-level (L1) and 200 fine-grained (L2) clusters — over OpenAI embeddings. Cluster labels are generated via LLM. This enables efficient, scope-narrowed retrieval. |
+| **MMR (Maximal Marginal Relevance)** | A diversity-aware selection algorithm used during clustering to pick representative transcript samples per cluster. It balances relevance to the cluster centroid with diversity among selected items, controlled by a lambda parameter. |
+| **Knowledge Graph** | A Neo4j graph database where nodes represent Transcripts, Domains, Call Reasons, and Interaction Drivers, linked by typed relationships (`IN_DOMAIN`, `HAS_REASON`, `HAS_DRIVER`). Enables structured, relationship-aware retrieval. |
+| **PPR (Personalized PageRank)** | A graph traversal algorithm that scores transcript relevance by seeding PageRank from query-matched driver/domain nodes. Transcripts accumulating higher random-walk probability are ranked higher, capturing multi-hop relational context. |
+| **RAG Pipeline** | The core retrieval-augmented generation system. Query Routing classifies intent and decides between direct LLM response or retrieval. Retrieval combines Graph Search (PPR), Vector Search (ChromaDB), and Keyword Search (BM25). Results are reranked via cross-encoder before final LLM synthesis. |
+| **Evaluation Suite** | Measures pipeline quality across retrieval (Recall, MRR, Hit@K, Cosine Similarity) and generation (BLEU, ROUGE-1/2/L, BERTScore F1). LLM-based metrics score Relevancy, Completeness, and Coherence. |
+| **Visualization** | Generates sentiment progression curves, hierarchical bubble charts, intent distribution bar charts, nested pie charts for cluster breakdown, and driver frequency histograms — all rendered as Base64 images for the frontend. |
+| **Query Generation** | Scripts that programmatically generate causal reasoning queries (Task 1) and multi-turn follow-up queries (Task 2) for pipeline testing and evaluation. |
+
+---
 ## Demo Video
 
 [![CausalFlux Demo Video](https://img.youtube.com/vi/5CY9jB4rwU4/maxresdefault.jpg)](https://youtu.be/5CY9jB4rwU4?si=ZJWNmyUdzVaeUA_X)
@@ -78,23 +94,7 @@ graph TD
     Backend --> DL
 ```
 
----
 
-## Core Components
-
-This section provides a concise overview of the key techniques and modules used across the pipeline.
-
-| Component | Description |
-|-----------|-------------|
-| **Corpus Generation** | Uses Google Gemini to extract structured metadata (domain, intent, call reason, interaction drivers, sentiment scores) from raw call transcripts, transforming unstructured conversations into analysis-ready data. |
-| **Hierarchical Clustering** | Employs agglomerative clustering at two levels — 20 high-level (L1) and 200 fine-grained (L2) clusters — over OpenAI embeddings. Cluster labels are generated via LLM. This enables efficient, scope-narrowed retrieval. |
-| **MMR (Maximal Marginal Relevance)** | A diversity-aware selection algorithm used during clustering to pick representative transcript samples per cluster. It balances relevance to the cluster centroid with diversity among selected items, controlled by a lambda parameter. |
-| **Knowledge Graph** | A Neo4j graph database where nodes represent Transcripts, Domains, Call Reasons, and Interaction Drivers, linked by typed relationships (`IN_DOMAIN`, `HAS_REASON`, `HAS_DRIVER`). Enables structured, relationship-aware retrieval. |
-| **PPR (Personalized PageRank)** | A graph traversal algorithm that scores transcript relevance by seeding PageRank from query-matched driver/domain nodes. Transcripts accumulating higher random-walk probability are ranked higher, capturing multi-hop relational context. |
-| **RAG Pipeline** | The core retrieval-augmented generation system. Query Routing classifies intent and decides between direct LLM response or retrieval. Retrieval combines Graph Search (PPR), Vector Search (ChromaDB), and Keyword Search (BM25). Results are reranked via cross-encoder before final LLM synthesis. |
-| **Evaluation Suite** | Measures pipeline quality across retrieval (Recall, MRR, Hit@K, Cosine Similarity) and generation (BLEU, ROUGE-1/2/L, BERTScore F1). LLM-based metrics score Relevancy, Completeness, and Coherence. |
-| **Visualization** | Generates sentiment progression curves, hierarchical bubble charts, intent distribution bar charts, nested pie charts for cluster breakdown, and driver frequency histograms — all rendered as Base64 images for the frontend. |
-| **Query Generation** | Scripts that programmatically generate causal reasoning queries (Task 1) and multi-turn follow-up queries (Task 2) for pipeline testing and evaluation. |
 
 ---
 
