@@ -194,7 +194,3 @@ def generate_cluster_pie(clusterings_file, transcript_ids):
 | scipy | >=1.10.0 | Interpolation |
 
 ---
-
-## License
-
-This project is provided as-is for educational and research purposes.
