@@ -408,6 +408,18 @@ python Evaluations.py
 - **Generation**: BLEU, ROUGE-1/2/L, BERTScore F1
 - **LLM-based**: Relevancy, Completeness, Coherence
 
+### Performance Benchmarks
+The following table highlights the quantitative evolution of our architecture from a basic RAG setup to our final Cluster-Masked Interaction Driven Graph Based Retriever.
+
+| Model Architecture | Recall | Cos Sim | Doc Rel | ROUGE-L | BERTScore | Ans Rel | Complete | Coherence | **Final Score** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Final (Cluster-Masked Graph)** | 0.6325 | 0.5627 | 0.7326 | 0.3478 | 0.3973 | 0.9310 | 0.8370 | 0.9488 | **0.7347** |
+| **PPR (Naive Graph RAG)** | 0.5755 | 0.6664 | 0.8880 | 0.2689 | 0.3497 | 0.8774 | 0.6596 | 0.8926 | **0.6736** |
+| **BM25 (Hybrid Vector + Sparse)** | 0.4900 | 0.5282 | 0.5780 | 0.2028 | 0.2772 | 0.7995 | 0.6359 | 0.8023 | **0.5792** |
+| **Vanilla RAG (Baseline)** | 0.4025 | 0.3707 | 0.5912 | 0.1565 | 0.2068 | 0.7441 | 0.6487 | 0.7511 | **0.5532** |
+
+*(Note: Standard metrics like Precision and Accuracy were deliberately excluded from our suite, as generative tasks lack a consistent operational definition of false positives, and accuracy presupposes strict string matching which fails to account for valid causal divergence.)*
+
 ---
 
 ## API Endpoints
